@@ -96,7 +96,7 @@ def rename(path, template: str, start: int, step: int, pad: int, upper: bool, ye
     # prompt user to proceed with renaming
     confirm = yes or click.confirm("\nContinue to rename files?")
     if confirm:
-        renamer._rename(names)
+        renamer.rename(names)
         click.echo(f"\n({len(renamer.files)}) files renamed successfully.")
     else:
         click.echo(click.style("Operation aborted.", fg="red", bold=True))
@@ -124,7 +124,7 @@ def replace(path, old, new, match_case, yes):
     # prompt user to proceed with renaming
     confirm = yes or click.confirm("\nContinue to rename files?")
     if confirm:
-        renamer._rename(names)
+        renamer.rename(names)
         click.echo(f"\n({len(renamer.files)}) files renamed successfully.")
     else:
         click.echo(click.style("Operation aborted.", fg="red", bold=True))

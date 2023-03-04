@@ -90,7 +90,7 @@ class BatchRenamer(Template):
         seq = (n for n in range(start, stop, step))
         return seq
 
-    def _rename(self, names):
+    def rename(self, names):
         """
         Renames fetched files with provided names
         """
