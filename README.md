@@ -43,24 +43,21 @@ renamer = BatchRenamer(path="Desktop/Movies", pad=1, template="Merlin %n")
    print(n_seq) # -> ['2', '4', '6']
    ```
    
- - `replace` replaces a substring or match in old file name with new one, returns a list of new strings
-             without renaming fetched files.
-             Case sensitivity is enabled (`match_case`) by default and number of times to replace (`count`) defaults to 1.
+ - `replace` replaces a substring or match in old file name with new one, returns a list of new strings without renaming fetched files.
+ Case sensitivity is enabled (`match_case`) by default and number of times to replace (`count`) defaults to 1.
    ```python
    print(renamer.fetched_files) # assuming files have names ['E-01', 'E-02', 'E-03']
    new_names = renamer.replace('E-', 'Episode ')
    print(new_names) # -> ['Episode 1', 'Episode 2', 'Episode 3']
    ```
    
- - `rename` rename fetched files using provided `template`, this method automatically generates the values (sequences)
-            according to the template but you can specify custom sequences for both numeric and alphabetic
-   ```python
-   renamer.rename(upper=True) # rename with auto-generated sequence, upper for upper case letter sequence
-   renamer.rename(a_seq=a_seq, n_seq=n_seq) # rename with custom sequences
-   ```
+ - `expand_template` generates new names from `template`, this method automatically generates the values (sequences) according to the template but you can specify custom sequences for both numeric and alphabetic.
+ ```python
+  renamer.expand_template(upper=True) # auto-generated sequence, upper for upper case letter sequence
+  renamer.expand_template(a_seq=a_seq, n_seq=n_seq) # generate with custom sequences
+ ```
  
- - `_rename` rename fetched files with `names` supplied as argument, useful when replacing a substring or
-   a match with the `replace` method
-   ```python
-   renamer._rename(new_names)
-   ```
+ - `rename` rename fetched files with `names` supplied as argument, useful when replacing a substring the `replace` method or after expanding the template with `expand_template`
+ ```python
+ renamer.rename(new_names)
+ ```
