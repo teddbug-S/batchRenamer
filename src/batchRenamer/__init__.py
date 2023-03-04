@@ -94,10 +94,9 @@ class BatchRenamer(Template):
         """
         Renames fetched files with provided names
         """
-        for file, name in zip(self.files, names):
-            path, _ = os.path.split(file.path)
-            os.rename(src=file.path, dst=os.path.join(path, name))
-            yield file.name, name
+        for file_, name in zip(self.files, names):
+            path, _ = os.path.split(file_.path)
+            os.rename(src=file_.path, dst=os.path.join(path, name))
 
     def replace(self, old: str, new: str, *, match_case=True, count=1):
         """
@@ -116,7 +115,7 @@ class BatchRenamer(Template):
 
         return new_names
 
-    def rename(self, a_seq=None, n_seq=None, upper=False):
+    def expand_template(self, a_seq=None, n_seq=None, upper=False):
         """
         Renames fetched files using template.
         For further customization, you may provide
@@ -129,19 +128,16 @@ class BatchRenamer(Template):
         a_seq = a_seq or self.generate_a_seq(upper=upper)
         n_seq = n_seq or self.generate_n_seq()
 
+        names = []
+
         for a, n, file in zip(a_seq, n_seq, self.files):
             basename, ext = os.path.splitext(file.name)
             # construct new name
-            new_name = template.substitute(
+            name = template.substitute(
                     d=basename, a=a, n=str(n).zfill(self.pad)) + ext
-            path, _ = os.path.split(file.path)
-            os.rename(
-                src=file.path,
-                dst=os.path.join(path, new_name)
-            )
-
-            # yield (old name, new name) pairs
-            yield file.name, new_name
+            names.append(name)
+        
+        return names
 
 
 __all__ = [
