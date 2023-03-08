@@ -53,11 +53,42 @@ renamer = BatchRenamer(path="Desktop/Movies", pad=1, template="Merlin %n")
    
  - `expand_template` generates new names from `template`, this method automatically generates the values (sequences) according to the template but you can specify custom sequences for both numeric and alphabetic.
  ```python
-  renamer.expand_template(upper=True) # auto-generated sequence, upper for upper case letter sequence
-  renamer.expand_template(a_seq=a_seq, n_seq=n_seq) # generate with custom sequences
+  new_names = renamer.expand_template(upper=True) # auto-generated sequence, upper for upper case letter sequence
+  print(new_names) #  ['Merlin 01', 'Merlin 02', 'Merlin 03']
+  
+  new_names = renamer.expand_template(a_seq=a_seq, n_seq=n_seq) # generate with custom sequences
+  print(new_names) # ['Merlin 02', 'Merlin 04', 'Merlin 06']
  ```
  
  - `rename` rename fetched files with `names` supplied as argument, useful when replacing a substring the `replace` method or after expanding the template with `expand_template`
  ```python
  renamer.rename(new_names)
  ```
+
+#### Renaming Template Placeholders
+ Templates can contain character constants that you want to include in file
+ name, e.g. 'data_file_%n', this will include the string 'data_file' including
+ a substitution of the '%n' placeholder into a number sequence.
+
+ Placeholders: each placeholder should begin with a `%` symbol as in the example above
+  
+  - n: for a number sequence, files will be counted and `%n` 
+        will be substituted for each file count. 
+        Automatically, counting starts from zero (0) and will end at count of
+        last file with a step of one (1).
+
+        e.g. 'Merlin - Episode %n' -> 'Merlin - Episode 1', 'Merlin - Episode 2', ...
+
+        This behaviour can be customized by supplying the `--start` and `--step`
+        options to what you want.
+
+  - a: for an alphabetic sequence i.e abc... or ABC...
+      e.g. 'Section - %a' -> 'Section a', 'Section b', ...
+          'Section - %a' -> 'Section A', 'Section B', ... 
+
+  - d: this placeholder substitutes into the new name the old name of each file when supplied, it 
+       is useful if you want to include the old names in the new name. 
+
+       e.g. Template: 'Data %d'
+            Old files: [ 'Column One', 'Column Two', ... ]
+            New names: 'Data Column One', 'Data Column Two', ...
