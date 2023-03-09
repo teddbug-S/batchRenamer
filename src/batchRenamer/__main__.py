@@ -106,7 +106,7 @@ def rename(path, template: str, start: int, step: int, pad: int, upper: bool, ye
 @click.argument('path', type=click.Path(exists=True))
 @click.option('-o', '--old', default="", help="substring to be replaced")
 @click.option('-n', '--new', default="", help="new string to replace match with.")
-@click.option('-m', '--match-case', default=False, is_flag=True)
+@click.option('-m', '--match-case', default=False, is_flag=True, help="perform a case sensitive search")
 @click.option('-y', '--yes', default=False, is_flag=True, help="continue to rename files")
 def replace(path, old, new, match_case, yes):
     """
