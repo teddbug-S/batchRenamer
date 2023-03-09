@@ -67,8 +67,8 @@ renamer = BatchRenamer(path="Desktop/Movies", pad=1, template="Merlin %n")
 
 ### Renaming Template Placeholders
  Templates can contain character constants that you want to include in file
- name, e.g. `data_file_%n`, this will include the string `data_file` including
- a substitution of the `%n` placeholder into a number sequence.
+ name, e.g. `data_file_%n`, this will include the string `data_file` and
+ a substitution of `%n` placeholder into a number sequence.
 
  Placeholders: each placeholder should begin with a `%` symbol as in the example above
   
