@@ -2,6 +2,9 @@ from setuptools import setup, find_packages
 
 from src.BatchRenamer import __version__
 
+with open("README.md") as readme:
+    long_description = readme.read()
+
 setup(
     name="batchRenamer",
     version=__version__,
@@ -9,6 +12,7 @@ setup(
     author_email="teddbug47@gmail.com",
     maintainer="Divine Darkey (teddbug-S)",
     maintainer_email="teddbug47@gmail.com",
+    long_description=long_description,
     url="https://github.com/teddbug-S/batchRenamer",
     project_urls={
         "Issues": "https://github.com/teddbug-S/batchRenamer/issues",
