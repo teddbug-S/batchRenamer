@@ -1,4 +1,4 @@
-## A powerful but simple batch renamer.
+# A powerful but simple batch renamer.
 Rename multiple files or directories elegantly with rich features such as
   - fully customizable numeric sequence
   - upper or lowercase alphabetic sequence
@@ -18,7 +18,7 @@ new file names.
 renamer = BatchRenamer(path="Desktop/Movies", pad=1, template="Merlin %n")
 ```
 
-#### Methods
+### Methods
  - `fetch_files` call with no arguments to fetch the files residing in `path` or files to rename.
    ```python
    # fetch files to rename
@@ -65,28 +65,28 @@ renamer = BatchRenamer(path="Desktop/Movies", pad=1, template="Merlin %n")
  renamer.rename(new_names)
  ```
 
-#### Renaming Template Placeholders
+### Renaming Template Placeholders
  Templates can contain character constants that you want to include in file
  name, e.g. 'data_file_%n', this will include the string 'data_file' including
  a substitution of the '%n' placeholder into a number sequence.
 
  Placeholders: each placeholder should begin with a `%` symbol as in the example above
   
-  - n: for a number sequence, files will be counted and `%n` 
-        will be substituted for each file count. 
-        Automatically, counting starts from zero (0) and will end at count of
-        last file with a step of one (1).
+  - `n`: for a number sequence, files will be counted and `%n` 
+       will be substituted for each file count. 
+       Automatically, counting starts from zero (0) and will end at count of
+       last file with a step of one (1).
 
-        e.g. 'Merlin - Episode %n' -> 'Merlin - Episode 1', 'Merlin - Episode 2', ...
+       e.g. 'Merlin - Episode %n' -> 'Merlin - Episode 1', 'Merlin - Episode 2', ...
 
-        This behaviour can be customized by supplying the `--start` and `--step`
-        options to what you want.
+       This behaviour can be customized by supplying the `--start` and `--step`
+       options to what you want.
 
-  - a: for an alphabetic sequence i.e abc... or ABC...
+  - `a`: for an alphabetic sequence i.e abc... or ABC...
       e.g. 'Section - %a' -> 'Section a', 'Section b', ...
           'Section - %a' -> 'Section A', 'Section B', ... 
 
-  - d: this placeholder substitutes into the new name the old name of each file when supplied, it 
+  - `d`: this placeholder substitutes into the new name the old name of each file when supplied, it 
        is useful if you want to include the old names in the new name. 
 
        e.g. Template: 'Data %d'
