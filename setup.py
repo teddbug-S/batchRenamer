@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-from src.BatchRenamer import __version__
+from src.batchRenamer import __version__
 
 with open("README.md") as readme:
     long_description = readme.read()
