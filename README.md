@@ -1,4 +1,4 @@
-# A powerful but simple batch renamer.
+# A simple but powerful batch renamer.
 Rename multiple files or directories elegantly with rich features such as
   - fully customizable numeric sequence
   - upper or lowercase alphabetic sequence
